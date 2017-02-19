@@ -3,3 +3,6 @@ env: remove-env
 
 remove-env:
 	rm -rf ./env
+
+test:
+	@pytest
