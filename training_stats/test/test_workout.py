@@ -40,8 +40,8 @@ def test_workout_total_weight_sums_weight_and_reps():
     workout = Workout(date=date(2017, 1, 1))
     workout.add_exercise(name='a', reps=2, weight=1)
     assert workout.total_weight() == 2
-    workout.add_exercise(name='a', reps=1, weight=1)
-    assert workout.total_weight() == 3
+    workout.add_exercise(name='a', reps=1, weight=1.2)
+    assert workout.total_weight() == 3.2
 
 
 def test_workouts_total_weight_by_date_series():
