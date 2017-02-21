@@ -4,7 +4,7 @@ class Workouts:
     def __init__(self):
         self.workouts = []
 
-    def addWorkout(self, workout):
+    def add_workout(self, workout):
         self.workouts.append(workout)
 
     def total_weight_by_date_series(self):
@@ -15,7 +15,7 @@ class Workout:
         self.date = date
         self.exercises = []
 
-    def addExercise(self, name: str, reps: int, weight: float):
+    def add_exercise(self, name: str, reps: int, weight: float):
         self.exercises.append(Exercise(name, reps, weight))
 
     def total_weight(self):
