@@ -1,6 +1,7 @@
 from typing import List, Tuple
 from datetime import date
 
+
 class Exercise(dict):
     def __init__(self, name: str, reps: int, weight: float):
         self.name = name
@@ -22,4 +23,7 @@ class Workouts:
         self.workouts = workouts or []
 
     def total_weight_by_date_series(self) -> List[Tuple[date, float]]:
-        return sorted([(w.date, w.total_weight()) for w in self.workouts], key=lambda w: w[0])
+        return sorted(
+            [(w.date, w.total_weight()) for w in self.workouts],
+            key=lambda w: w[0]
+        )
