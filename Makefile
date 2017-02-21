@@ -6,3 +6,6 @@ remove-env:
 
 test:
 	@pytest
+
+lint:
+	@flake8 ./training_stats
