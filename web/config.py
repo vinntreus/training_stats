@@ -1,5 +1,6 @@
 from os import environ
 
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -7,8 +8,10 @@ class Config(object):
     SECRET_KEY = environ['SECRET_KEY']
     SQLALCHEMY_DATABASE_URI = environ['DATABASE_URL']
 
+
 class ProductionConfig(Config):
     pass
+
 
 class DevelopmentConfig(Config):
     DEBUG = True

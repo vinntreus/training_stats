@@ -1,3 +1,5 @@
+.PHONY: env remove-env test lint web db-migrate db-upgrade
+
 env: remove-env
 	python3 -m venv env
 	pip install -r requirements.txt
@@ -9,10 +11,11 @@ test:
 	@pytest
 
 lint:
-	@flake8 ./training_stats
+	@flake8 ./web
+	@flake8 ./domain
 
 web:
-	gunicorn app:app
+	gunicorn run_web:app
 
 db-migrate:
 	python manage.py db migrate

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Workouts</h1>
+{% for w in workouts %}
+    <h2 class='workout-heading'>{{ w.date }}</h2>
+    <div class='workout'>
+        {% for e in w.exercises %}
+            <div class='exercise'>
+                <h3>{{ e.name }}</h3>
+                {% for s in e.sets %}
+                    <div class='set'>
+                        <span>{{ s.reps }}x{{ s.weight }}</span>
+                        <i>{{ s.notes }}</i>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+{% endblock %}

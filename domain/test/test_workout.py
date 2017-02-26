@@ -1,5 +1,5 @@
 from datetime import date
-from training_stats.workout import Workout, Exercise, Workouts
+from domain.workout import Workout, Exercise, Workouts
 
 
 def test_workout_without_exercises_has_zero_total_weight():

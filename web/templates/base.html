@@ -2,20 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Training stats</title>
+        <title>{{ title }}</title>
         <style>
             body{
                 color:#363636;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
             }
-            h1{
+            h1, h2, h3, h4{
                 font-weight: 300;
             }
+            .workout{
+                display: flex;
+                padding-bottom:32px;
+            }
+            .workout-heading{
+                margin:0;
+            }
+            .workout > .exercise{
+                margin-right:16px;
+            }
+
         </style>
     </head>
     <body>
         <div class="container">
-            <h1>Training stats</h1>
+            {% block content %}{% endblock %}
         </div>
     </body>
 </html>
