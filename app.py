@@ -1,5 +1,8 @@
+from os import environ
 from flask import Flask, render_template
-app = Flask(__name__)
+
+app = Flask('training_stats')
+app.config.from_object(environ['APP_SETTINGS'])
 
 
 @app.route('/')

@@ -11,4 +11,4 @@ lint:
 	@flake8 ./training_stats
 
 web:
-	gunicorn training_stats.app:app
+	gunicorn app:app
