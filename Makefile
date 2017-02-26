@@ -1,5 +1,6 @@
 env: remove-env
 	python3 -m venv env
+	pip install -r requirements.txt
 
 remove-env:
 	rm -rf ./env
