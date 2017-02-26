@@ -13,3 +13,9 @@ lint:
 
 web:
 	gunicorn app:app
+
+db-migrate:
+	python manage.py db migrate
+
+db-upgrade:
+	python manage.py db upgrade

@@ -5,6 +5,7 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = environ['SECRET_KEY']
+    SQLALCHEMY_DATABASE_URI = environ['DATABASE_URL']
 
 class ProductionConfig(Config):
     pass
