@@ -3,3 +3,7 @@ python:
   - "3.6"
 install: "pip install -r requirements.txt"
 script: make test
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database training_stats;' -U postgres
