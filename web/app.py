@@ -4,7 +4,6 @@ from web.models import db, load_workouts, get_workout
 
 app = Flask(__name__)
 app.config.from_object(environ['APP_SETTINGS'])
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 
