@@ -13,5 +13,5 @@ make web
 ```
 With flask development server
 ```shell
-python app.py
+python run_web.py
 ```
