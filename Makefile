@@ -22,3 +22,6 @@ db-migrate:
 
 db-upgrade:
 	python manage.py db upgrade
+
+db-downgrade:
+	python manage.py db downgrade
