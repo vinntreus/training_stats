@@ -3,6 +3,8 @@ python:
   - "3.6"
 install: "pip install -r requirements.txt"
 script: make test
+addons:
+  postgresql: "9.6"
 services:
   - postgresql
 before_script:
