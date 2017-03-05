@@ -1,7 +1,13 @@
-from web.app import app
-
-def test_web():
+def test_web(app):
     client = app.test_client()
-    result = client.get('/')
-    assert result.status_code == 200
-    assert b"<title>Training stats</title>" in result.data
+    response = client.post(
+        '/user/sign-in?next=/',
+        follow_redirects=True,
+        data=dict(
+            username='test@test.com',
+            password='Password1'
+        )
+    )
+    response = client.get('/')
+    assert response.status_code == 200
+    assert b"<title>Training stats</title>" in response.data

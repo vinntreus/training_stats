@@ -1,18 +1,28 @@
 from os import environ
 from flask import Flask, render_template, redirect, url_for
-from web.models import db, load_workouts, get_workout
+from flask_user import login_required, UserManager
+from web.models import db, load_workouts, get_workout, db_adapter
+
 
 app = Flask(__name__)
-app.config.from_object(environ['APP_SETTINGS'])
-db.init_app(app)
+user_manager = None
+
+
+def init_app(app, extra_config_settings={}):
+    app.config.from_object(environ['APP_SETTINGS'])
+    app.config.update(extra_config_settings)
+    db.init_app(app)
+    user_manager = UserManager(db_adapter, app)  # noqa: F841
 
 
 @app.route('/')
+@login_required
 def index():
     return render_template('index.html', title=title())
 
 
 @app.route('/workouts', methods=['GET'])
+@login_required
 def list_workouts():
     workouts = load_workouts()
     return render_template(
@@ -39,6 +49,7 @@ def show_workout(workout_id):
         workout=workout,
         title=title('Workout'),
     )
+
 
 def title(sub_title=None):
     title = 'Training stats'
