@@ -1,8 +1,9 @@
 .PHONY: env remove-env test lint web db-migrate db-upgrade
 
 env: remove-env
-	python3 -m venv env
-	pip install -r requirements.txt
+	python3 -m venv env; \
+	source env/bin/activate; \
+	pip install -r requirements.txt; \
 
 remove-env:
 	rm -rf ./env

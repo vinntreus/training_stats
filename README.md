@@ -3,7 +3,8 @@
 ## Setup on local dev
 ```shell
 make env
-source settings.sh
+source ./settings
+source ./env/bin/activate
 ```
 
 ## Start web
