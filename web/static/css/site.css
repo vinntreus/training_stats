@@ -1,0 +1,17 @@
+body{
+    color:#363636;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+}
+h1, h2, h3, h4{
+    font-weight: 300;
+}
+.workout{
+    display: flex;
+    padding-bottom:32px;
+}
+.workout-heading{
+    margin:0;
+}
+.workout > .exercise{
+    margin-right:16px;
+}
