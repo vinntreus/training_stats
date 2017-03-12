@@ -1,7 +1,8 @@
 from os import environ
 from flask import Flask, render_template, redirect, url_for
-from flask_user import login_required, UserManager
-from web.models import db, load_workouts, get_workout, db_adapter
+from flask_user import login_required, UserManager, current_user
+from web.models import db, load_workouts, get_workout, db_adapter, Workout
+from web.forms import WorkoutForm
 
 
 app = Flask(__name__)
@@ -32,13 +33,17 @@ def list_workouts():
     )
 
 
-@app.route('/workouts', methods=['POST'])
+@app.route('/workouts/new', methods=['POST', 'GET'])
 def create_workout():
-    # validate form
-    # create workout from form
-    # handle errors
-    # redirect to workout-page
-    return redirect(url_for('show_workout', workout_id=1))
+    form = WorkoutForm()
+    if form.validate_on_submit():
+        workout = Workout(date=form.date.data)
+        workout.user_id = current_user.id
+        db.session.add(workout)
+        db.session.commit()
+        return redirect(url_for('show_workout', workout_id=workout.id))
+    else:
+        return render_template('workout_create.html', form=form)
 
 
 @app.route('/workouts/<workout_id>', methods=['GET'])

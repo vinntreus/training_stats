@@ -1,12 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Training stats</h1>
-<form method="post" action="/workouts">
-    <h3>Add workout</h3>
-    <input type="date" id="workout_date" name="date" />
-    <input type="submit" value="Create" />
-</form>
-<script>
-    document.getElementById('workout_date').valueAsDate = new Date();
-</script>
+<a href="/workouts/new">Add workout</a>
 {% endblock %}

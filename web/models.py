@@ -13,10 +13,11 @@ class Workout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(DATE, nullable=False)
     exercises = db.Column(JSON, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, date, exercises):
+    def __init__(self, date, exercises=None):
         self.date = date
-        self.exercises = exercises
+        self.exercises = exercises or []
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
@@ -43,6 +44,7 @@ class User(db.Model, UserMixin):
     )
     first_name = db.Column(db.String(100), nullable=False, server_default='')
     last_name = db.Column(db.String(100), nullable=False, server_default='')
+    workouts = db.relationship('Workout', backref='users', lazy='dynamic')
 
 
 db_adapter = SQLAlchemyAdapter(db, User)
@@ -118,4 +120,4 @@ def load_workouts():
 
 
 def get_workout(workout_id):
-    return load_workouts()[0]
+    return Workout.query.get(workout_id)
