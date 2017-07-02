@@ -18,6 +18,12 @@ lint:
 web:
 	gunicorn run_web:app
 
+db-up:
+	docker-compose up -d
+
+db-down:
+	docker-compose down -v
+
 db-migrate:
 	python manage.py db migrate
 

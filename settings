@@ -2,4 +2,4 @@
 # you cannot run it directly
 export APP_SETTINGS="web.config.DevelopmentConfig"
 export SECRET_KEY="not-so-secret"
-export DATABASE_URL="postgresql://localhost/training_stats"
+export DATABASE_URL="postgresql://postgres@localhost/training_stats"

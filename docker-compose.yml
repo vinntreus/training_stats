@@ -1,0 +1,11 @@
+version: '3'
+services:
+  postgres:
+    container_name: training_stats-postgres
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - $HOME/postgres/training_stats:/data
+    environment:
+      POSTGRES_DB: training_stats

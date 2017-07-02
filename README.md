@@ -2,6 +2,7 @@
 
 ## Setup on local dev
 ```shell
+make db-up
 make env
 source ./settings
 source ./env/bin/activate
