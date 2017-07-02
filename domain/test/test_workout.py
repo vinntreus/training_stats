@@ -1,5 +1,5 @@
 from datetime import date
-from domain.workout import Workout, Exercise, Workouts
+from domain.workout import Workout, Exercise, total_weight_by_date
 
 
 def test_workout_without_exercises_has_zero_total_weight():
@@ -19,16 +19,16 @@ def test_workout_total_weight_sums_weight_and_reps():
 
 
 def test_workouts_total_weight_by_date_series():
-    workouts = Workouts(workouts=[
+    workouts = [
         Workout(date=date(2017, 1, 2), exercises=[
             Exercise(name='a', reps=2, weight=1),
         ]),
         Workout(date=date(2017, 1, 1), exercises=[
             Exercise(name='a', reps=1, weight=1),
         ])
-    ])
+    ]
 
-    assert workouts.total_weight_by_date_series() == [
+    assert total_weight_by_date(workouts) == [
         (date(2017, 1, 1), 1),
         (date(2017, 1, 2), 2)
     ]
