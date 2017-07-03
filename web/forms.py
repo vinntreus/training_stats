@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import DateField
+from wtforms import DateField, StringField
 from wtforms.validators import DataRequired
 
 class WorkoutForm(FlaskForm):
-    date = DateField('date', validators=[DataRequired()])
+    date = DateField('Date', validators=[DataRequired()])
+    exercises = StringField('Exercises')

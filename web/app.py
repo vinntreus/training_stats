@@ -1,3 +1,4 @@
+import json
 from os import environ
 from flask import Flask, render_template, redirect, url_for
 from flask_user import login_required, UserManager, current_user
@@ -37,7 +38,11 @@ def list_workouts():
 def create_workout():
     form = WorkoutForm()
     if form.validate_on_submit():
-        workout = Workout(date=form.date.data)
+        if form.exercises.data:
+            exercises = json.loads(form.exercises.data)
+        else:
+            exercises = None
+        workout = Workout(date=form.date.data, exercises=exercises)
         workout.user_id = current_user.id
         db.session.add(workout)
         db.session.commit()

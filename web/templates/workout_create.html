@@ -4,7 +4,12 @@
 <h3>Add workout</h3>
 <form method="post" action="">
     {{ form.hidden_tag() }}
+    <label>Date</label>
     <input type="date" id="workout_date" name="date" />
+    <br />
+    <label>Exercises</label>
+    <textarea name="exercises" rows="5" cols="15"></textarea>
+    <br />
     <input type="submit" value="Create" />
 </form>
 <script>

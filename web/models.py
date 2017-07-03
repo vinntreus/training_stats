@@ -20,7 +20,7 @@ class Workout(db.Model):
         self.exercises = exercises or []
 
     def __repr__(self):
-        return '<id {}>'.format(self.id)
+        return '<Workout id={}>'.format(self.id)
 
 
 class User(db.Model, UserMixin):
