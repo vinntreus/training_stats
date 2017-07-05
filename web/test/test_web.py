@@ -9,6 +9,7 @@ def login(client):
     )
     return response
 
+
 def test_navigating_to_startpage(app):
     client = app.test_client()
     login(client)
@@ -37,7 +38,12 @@ def test_workouts_with_exercises(app):
         '/workouts/new',
         data={
             'date': '2017-01-02',
-            'exercises': '[{"name": "marklyft", "sets": [{"reps": 10, "weight": 2, "note": "easy"}]}]',
+            'exercises': """[
+                {
+                    "name": "marklyft",
+                    "sets": [{"reps": 10, "weight": 2, "note": "easy"}]
+                }
+            ]""",
         },
         follow_redirects=True,
     )

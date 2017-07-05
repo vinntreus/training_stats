@@ -17,17 +17,32 @@ def init_app(app, extra_config_settings={}):
     user_manager = UserManager(db_adapter, app)  # noqa: F841
 
 
+def render(template, **kwargs):
+    return render_template(template, **context(**kwargs))
+
+
+def context(**kwargs):
+    return dict(
+        logo_text='Training stats',
+        menu_items=[
+            {'href': '/workouts', 'text': 'List workouts', 'css': ''},
+            {'href': '/workouts/new', 'text': 'New workout', 'css': ''},
+        ],
+        **kwargs
+    )
+
+
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html', title=title())
+    return render('index.html', title=title())
 
 
 @app.route('/workouts', methods=['GET'])
 @login_required
 def list_workouts():
-    workouts = load_workouts()
-    return render_template(
+    workouts = load_workouts(user_id=current_user.id)
+    return render(
         'workouts_list.html',
         workouts=workouts,
         title=title('Workouts'),
@@ -48,13 +63,17 @@ def create_workout():
         db.session.commit()
         return redirect(url_for('show_workout', workout_id=workout.id))
     else:
-        return render_template('workout_create.html', form=form)
+        return render(
+            'workout_create.html',
+            form=form,
+            title=title('New workout'),
+        )
 
 
 @app.route('/workouts/<workout_id>', methods=['GET'])
 def show_workout(workout_id):
     workout = get_workout(workout_id)
-    return render_template(
+    return render(
         'workout_show.html',
         workout=workout,
         title=title('Workout'),
