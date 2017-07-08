@@ -5,11 +5,10 @@
     {% for e in workout.exercises %}
         <div class='exercise'>
             <h3>{{ e.name }}</h3>
-            {% for s in e.sets %}
-                <div class='set'>
-                    <span>{{ s.reps }}x{{ s.weight }}</span>
-                    <i>{{ s.note }}</i>
-                </div>
+            {% for key, val in e.items() %}
+                {% if key != 'name' %}
+                    <div>{{ key }}: {{ val }}</div>
+                {% endif %}
             {% endfor %}
         </div>
     {% endfor %}
