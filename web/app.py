@@ -8,6 +8,11 @@ from web.forms import WorkoutForm
 
 app = Flask(__name__)
 user_manager = None
+TITLE = 'Training stats'
+
+
+def title(sub_title, title=TITLE):
+    return '{sub_title} - {title}'.format(sub_title=sub_title, title=title)
 
 
 def init_app(app, extra_config_settings={}):
@@ -35,7 +40,7 @@ def context(**kwargs):
 @app.route('/')
 @login_required
 def index():
-    return render('index.html', title=title())
+    return render('index.html', title=TITLE)
 
 
 @app.route('/workouts', methods=['GET'])
@@ -78,11 +83,3 @@ def show_workout(workout_id):
         workout=workout,
         title=title('Workout'),
     )
-
-
-def title(sub_title=None):
-    title = 'Training stats'
-    if sub_title:
-        return '{sub_title} - {title}'.format(sub_title=sub_title, title=title)
-    else:
-        return title
