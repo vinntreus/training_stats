@@ -18,7 +18,7 @@ def test_navigating_to_startpage(app):
     assert b"<title>Training stats</title>" in response.data
 
 
-def test_workouts(app):
+def test_create_workout(app):
     client = app.test_client()
     login(client)
     response = client.post(
@@ -31,7 +31,7 @@ def test_workouts(app):
     assert b"2017-01-01" in response.data
 
 
-def test_workouts_with_exercises(app):
+def test_create_workout_with_exercises(app):
     client = app.test_client()
     login(client)
     response = client.post(
