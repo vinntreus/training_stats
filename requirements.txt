@@ -15,7 +15,7 @@ Flask-WTF==0.14.2
 gunicorn==19.6.0
 itsdangerous==0.24
 Jinja2==2.11.1
-Mako==1.0.6
+Mako==1.2.2
 MarkupSafe==0.23
 mccabe==0.6.1
 passlib==1.7.1
